@@ -2,8 +2,8 @@ import { PrismaClient } from '@prisma/client'
 
 export const prisma = new PrismaClient().$extends({
   result: {
-    // Make sure "Product" matches your model name in schema.prisma
-    Product: {
+    //Make sure "Product" matches your model name in schema.prisma
+    product: {
       price: {
         compute(product) {
           return product.price.toString();
