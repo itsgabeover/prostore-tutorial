@@ -1,16 +1,19 @@
-import {  PrismaClient } from '@prisma/client'
+import { PrismaClient } from '@prisma/client'
 
-//extends prisma client with custom result transformer to convert price and rating fields to string
 export const prisma = new PrismaClient().$extends({
-    results: {
-        product: {
-            price: {
-                compute(product) { return product.price.toString() }
-            },
-            rating: {
-                compute(product) { return product.rating.toString() }
-            },
+  result: {
+    // Make sure "Product" matches your model name in schema.prisma
+    Product: {
+      price: {
+        compute(product) {
+          return product.price.toString();
         },
+      },
+      rating: {
+        compute(product) {
+          return product.rating.toString();
+        },
+      },
     },
-
-})
+  },
+});
